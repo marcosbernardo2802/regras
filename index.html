@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Protocolos de Integração - Crônicas Estelares</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diretrizes oficiais para membros do canal Crônicas Estelares que desejam participar das histórias como protagonistas.">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="https://raw.githubusercontent.com/marcosbernardo2802/portal/main/images/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/marcosbernardo2802/portal/main/images/favicon.png">
+
+    <!-- FONTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- ÍCONES -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --color-bg: #0a0f18;
+            --color-text: #e0e0e0;
+            --color-primary: #00f2fe;
+            --color-secondary: #e63946;
+            --color-card-bg: rgba(16, 26, 45, 0.7);
+            --color-card-border: #223354;
+            --color-shadow: rgba(0, 242, 254, 0.2);
+            --color-highlight: #ffd700;
+            --font-main: 'Exo 2', sans-serif;
+        }
+
+        body.light-theme {
+            --color-bg: #f4f7f9;
+            --color-text: #333333;
+            --color-primary: #005fbd;
+            --color-secondary: #d90429;
+            --color-card-bg: rgba(255, 255, 255, 0.85);
+            --color-card-border: #d1d9e0;
+            --color-shadow: rgba(0, 0, 0, 0.1);
+            --color-highlight: #b8860b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-main);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+        
+        /* BOTÕES FLUTUANTES */
+        .floating-button {
+            position: fixed; z-index: 1000; cursor: pointer;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-card-border);
+            border-radius: 50%; width: 40px; height: 40px;
+            display: flex; justify-content: center; align-items: center;
+            transition: all 0.3s ease;
+        }
+        .floating-button:hover { transform: scale(1.1); box-shadow: 0 0 10px var(--color-shadow); }
+        .floating-button svg { width: 20px; height: 20px; fill: var(--color-primary); }
+        .theme-switcher { top: 20px; right: 20px; }
+        .back-to-portal { top: 20px; left: 20px; }
+        .light-theme #theme-icon-dark, body:not(.light-theme) #theme-icon-light { display: none; }
+
+        /* BANNER */
+        .tool-banner { margin-bottom: 2rem; }
+        .tool-banner a { display: block; line-height: 0; }
+        .tool-banner-image {
+            width: 100%; height: auto; max-height: 150px;
+            object-fit: cover; border-radius: 12px;
+            border: 1px solid var(--color-card-border);
+            transition: transform 0.3s ease;
+        }
+        .tool-banner-image:hover { transform: scale(1.02); opacity: 0.9; }
+
+        /* CARTÕES DE CONTEÚDO */
+        .content-card {
+            background-color: var(--color-card-bg);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--color-card-border);
+            border-radius: 12px; padding: 2.5rem; margin-bottom: 2rem;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .light-theme .content-card { box-shadow: 0 8px 25px var(--color-shadow); }
+
+        h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
+        h1 { color: var(--color-secondary); text-align: center; font-size: 2.2rem; text-shadow: 0 0 10px rgba(230, 57, 70, 0.3); }
+        h2 { font-size: 1.5rem; border-bottom: 1px solid var(--color-card-border); padding-bottom: 0.5rem; margin-top: 1.5rem; }
+        h3 { font-size: 1.2rem; color: var(--color-text); font-weight: 700; margin-top: 1rem; }
+        
+        p, li { margin-bottom: 0.8rem; font-size: 1.05rem; }
+        ul { list-style: none; padding-left: 0; }
+        ul li { position: relative; padding-left: 1.5rem; }
+        ul li::before {
+            content: "\f0da"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+            position: absolute; left: 0; top: 0; color: var(--color-primary);
+        }
+
+        /* ALERTA DE PRIORIDADE */
+        .alert-box {
+            border-left: 5px solid var(--color-secondary);
+            background: rgba(230, 57, 70, 0.1);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 2rem;
+        }
+        .alert-box h2 { color: var(--color-secondary); border-bottom: none; margin-top: 0; display: flex; align-items: center; gap: 10px; }
+        .alert-text { font-weight: 600; }
+        .date-highlight { color: var(--color-secondary); font-weight: 800; text-decoration: underline; }
+
+        /* CAIXA DE DADOS */
+        .data-box {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem; border-radius: 8px;
+            border: 1px dashed var(--color-card-border);
+        }
+        .light-theme .data-box { background: rgba(0,0,0,0.05); }
+        
+        .field-label { color: var(--color-primary); font-weight: 700; }
+        .light-theme .field-label { color: var(--color-primary); }
+
+        /* RODAPÉ */
+        footer { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-card-border); color: #888; text-align: center; }
+        .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+        .footer-link { color: var(--color-text); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: color 0.3s; }
+        .footer-link:hover { color: var(--color-primary); }
+        .footer-link svg { width: 20px; height: 20px; fill: var(--color-primary); }
+        .copyright-text { font-size: 0.9em; }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .content-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body id="top">
+
+    <!-- BOTÕES DE NAVEGAÇÃO -->
+    <a href="https://cronicasestelares.vercel.app/" class="floating-button back-to-portal" title="Voltar ao portal">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+    </a>
+    
+    <div id="theme-toggle" class="floating-button theme-switcher" title="Alternar tema">
+        <svg id="theme-icon-dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13.14C20.97,13.14 20.3,13.42 19.82,13.9C19.34,14.38 19.06,15.05 19.06,15.72C19.06,16.39 19.34,17.06 19.82,17.54C20.3,18.02 20.97,18.3 21.64,18.3C22.31,18.3 22.98,18.02 23.46,17.54C23.94,17.06 24.22,16.39 24.22,15.72C24.22,15.05 23.94,14.38 23.46,13.9C22.98,13.42 22.31,13.14 21.64,13.14Z M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22C15.93,22 19.33,19.79 20.94,16.63C17.9,17.56 14.62,16.4 12.5,13.82C10.38,11.24 10.45,7.87 12.68,5.3C11.39,4.28 9.81,3.75 8.12,4.05C5.91,4.5 4.05,6.17 3.34,8.36C2.63,10.55 3.19,12.94 4.83,14.57C6.47,16.21 8.85,16.78 11.05,16.07C11.33,16 11.62,15.95 11.9,15.9C11.53,15.33 11.25,14.68 11.09,14C10.23,10.82 11.7,7.5 14.5,5.8C15.45,5.23 16.5,4.96 17.55,5C17.84,2.92 15.15,2 12,2Z"/></svg>
+        <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5V2.5H11V4.5H12M18.6,6.5L19.8,5.3L18.4,3.9L17.2,5.1L18.6,6.5M20.5,11H22.5V12H20.5V11M17.2,18.9L18.4,20.1L19.8,18.7L18.6,17.5L17.2,18.9M12,20.5V22.5H13V20.5H12M5.4,17.5L4.2,18.7L2.8,17.3L4,16.1L5.4,17.5M3.5,12H1.5V11H3.5V12M6.8,5.1L5.6,3.9L4.2,5.3L5.4,6.5L6.8,5.1Z"/></svg>
+    </div>
+
+    <main class="container">
+        <!-- BANNER -->
+        <div class="tool-banner">
+            <a href="https://www.youtube.com/@CronicasEstelaress" target="_blank" rel="noopener noreferrer">
+                <img class="tool-banner-image" src="https://raw.githubusercontent.com/marcosbernardo2802/portal/main/images/baner-app.png" alt="Banner Crônicas Estelares">
+            </a>
+        </div>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <div class="content-card">
+            <h1><i class="fas fa-file-contract"></i> Protocolos de Integração</h1>
+            <p style="text-align: center; margin-bottom: 2rem;">Diretrizes para participação de Membros na narrativa do canal.</p>
+
+            <!-- ALERTA PRIORITÁRIO -->
+            <div class="alert-box">
+                <h2><i class="fas fa-bullhorn"></i> TRANSMISSÃO PRIORITÁRIA</h2>
+                <p class="alert-text">
+                    Atenção, Oficiais! O Alto Comando informa uma mudança importante nos protocolos.
+                </p>
+                <p>
+                    <i class="fas fa-calendar-check"></i> <strong>VIGÊNCIA:</strong> A partir de <span class="date-highlight">01/02/2026</span>
+                </p>
+                <p>
+                    A participação como <strong>Protagonista</strong> (criação de avatar e inserção na história) passará a ser um benefício <strong>EXCLUSIVO</strong> para membros <strong>NÍVEL 2: COMANDANTE</strong>.
+                </p>
+            </div>
+
+            <!-- REQUISITOS DE PATENTE -->
+            <h2><i class="fas fa-medal"></i> 1. Requisitos de Patente e Benefícios</h2>
+            
+            <h3>🔹 Nível 1: Tenentes</h3>
+            <ul style="margin-bottom: 1.5rem;">
+                <li><strong><i class="fas fa-gem" style="color: var(--color-primary);"></i> Identidade Visual:</strong> Selos de fidelidade ao lado do nome e Emojis exclusivos para usar no chat e comentários.</li>
+                <li><strong><i class="fas fa-clock" style="color: var(--color-primary);"></i> Acesso Prioritário:</strong> Acesso antecipado aos novos vídeos e prioridade de resposta nos comentários.</li>
+                <li><strong><i class="fas fa-scroll" style="color: var(--color-primary);"></i> Honraria:</strong> Citação nominal na abertura de um vídeo futuro ou menção honrosa como parte da equipe de apoio.</li>
+                <li><strong>Status:</strong> Apoio tático essencial para a manutenção da frota.</li>
+            </ul>
+
+            <h3 style="color: var(--color-highlight);">🔸 Nível 2: Comandantes</h3>
+            <p style="margin-bottom: 1rem; font-style: italic; opacity: 0.8; font-size: 0.95rem;">
+                <i class="fas fa-check-double"></i> Inclui todos os benefícios de Nível 1.
+            </p>
+            <ul>
+                <li><strong>Privilégio:</strong> Acesso <strong>EXCLUSIVO</strong> ao programa de Protagonistas.</li>
+                <li><strong>Direito:</strong> Criação de Avatar Visual (gerado por IA) e participação ativa na narrativa do episódio (ex: liderar missões, pilotar naves, diálogos).</li>
+                <li><strong>Ação Necessária:</strong> Envio da Ficha de Dados Pessoais.</li>
+            </ul>
+
+            <!-- FICHA DE DADOS -->
+            <h2><i class="fas fa-id-card"></i> 2. Ficha de Dados Pessoais</h2>
+            <p>Para calibrar os sensores visuais da nave e gerar seu avatar, o <strong>Comandante</strong> deve primeiramente comentar no último vídeo do canal a frase <strong>"Solicito Comando da Missão"</strong>. Em seguida, deve enviar para o e-mail oficial (<a href="mailto:cronicasestelares.oficial@gmail.com" style="color: var(--color-primary);">cronicasestelares.oficial@gmail.com</a>) os seguintes dados:</p>
+
+            <div class="data-box">
+                <p style="font-size: 0.9em; opacity: 0.8; margin-bottom: 1rem;">
+                    <em>⚠️ <strong>Isenção de Responsabilidade:</strong> Devido à natureza experimental da IA, não garantimos cópia exata da descrição. Faremos o nosso melhor para criar um avatar fiel e heroico.</em>
+                </p>
+                <ul>
+                    <li><span class="field-label">Nome Completo do Personagem:</span> (Nome e Sobrenome. Ex: "Comandante Alex Thorne")</li>
+                    <li><span class="field-label">Função:</span> (Escolha apenas um: <strong>Militar</strong> OU <strong>Diplomata</strong>)</li>
+                    <li><span class="field-label">Idade Aproximada:</span> (Ex: "Entre 25 e 30 anos")</li>
+                    <li><span class="field-label">Porte Físico:</span> (Ex: Atlético, robusto, estatura média)</li>
+                    <li><span class="field-label">Cor da Pele:</span> (Descrição visual para referência)</li>
+                    <li><span class="field-label">Cabelo:</span> (Cor e corte. Ex: "Loiro, corte militar", "Castanho longo")</li>
+                    <li><span class="field-label">Barba:</span> (Ex: Sem barba, barba cheia, por fazer)</li>
+                    <li><span class="field-label">Extras (Opcional):</span> (Cor dos olhos ou acessórios simples. Quanto mais simples, melhor o resultado).</li>
+                </ul>
+            </div>
+
+            <!-- REGRAS E DIREITOS -->
+            <h2><i class="fas fa-gavel"></i> 3. Conduta e Direitos</h2>
+            <ul>
+                <li><strong>Lore:</strong> O personagem deve respeitar o universo Sci-Fi de <em>Crônicas Estelares</em>.</li>
+                <li><strong>Hierarquia:</strong> O roteiro final é decisão criativa do canal.</li>
+                <li><strong>Veto:</strong> Nomes ou descrições ofensivas resultarão em expulsão imediata da ponte de comando.</li>
+                <li><strong>Fila de Desdobramento:</strong> A aparição segue ordem de antiguidade ou sorteio mensal.</li>
+            </ul>
+
+            <h3>Direitos de Uso e Propriedade Intelectual</h3>
+            <p style="font-size: 0.95rem;">
+                Ao submeter seus dados, o membro concorda que todas as imagens dos avatares são criadas pela equipe técnica do canal. O <strong>Crônicas Estelares</strong> reserva-se o direito de utilizar as imagens geradas para quaisquer fins futuros (galerias, thumbnails, novas histórias e material promocional).
+            </p>
+
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://www.youtube.com/@CronicasEstelaress" target="_blank" class="footer-link">
+                    <i class="fab fa-youtube" style="font-size: 1.2rem; color: red;"></i>
+                    <span>Canal no YouTube</span>
+                </a>
+                <a href="mailto:cronicasestelares.oficial@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>cronicasestelares.oficial@gmail.com</span>
+                </a>
+            </div>
+            <p class="copyright-text">&copy; <span id="current-year">2026</span> Crônicas Estelares. Todos os sistemas operacionais.</p>
+        </div>
+    </footer>
+
+    <script>
+        // SCRIPT SIMPLES PARA TEMA E ANO
+        document.addEventListener('DOMContentLoaded', () => {
+            // Atualizar ano
+            if (document.getElementById('current-year')) {
+                document.getElementById('current-year').textContent = new Date().getFullYear();
+            }
+
+            // Lógica do Tema
+            const themeBtn = document.getElementById('theme-toggle');
+            themeBtn.addEventListener('click', () => {
+                const isLight = document.body.classList.toggle('light-theme');
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
+
+            // Aplicar tema salvo
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme === 'light') {
+                document.body.classList.add('light-theme');
+            } else if (!storedTheme && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                document.body.classList.add('light-theme');
+            }
+        });
+    </script>
+</body>
+</html>
