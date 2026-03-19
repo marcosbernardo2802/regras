@@ -106,6 +106,15 @@
                     .text-gray-900, .text-gray-800, .text-white, .text-gray-200 { 
                         color: var(--color-text) !important; 
                     }
+                    /* 4. Força o aplicativo a usar 100% do espaço quando estiver no Portal */
+main, .container, [class*="max-w-"], [class*="w-[90%]"], [class*="w-11/12"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    /* Se quiser que o conteúdo encoste bem nas bordas, descomente a linha abaixo: */
+    /* padding-left: 0 !important; padding-right: 0 !important; */
+}
                 `;
                 document.head.appendChild(camaleaoStyle);
 
