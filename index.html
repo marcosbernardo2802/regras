@@ -114,6 +114,8 @@
                         max-width: 100% !important;
                         margin-left: 0 !important;
                         margin-right: 0 !important;
+                        /* Descomente a linha abaixo se quiser colar o conteúdo nas paredes laterais */
+                        /* padding-left: 0 !important; padding-right: 0 !important; */
                     }
                 `;
                 document.head.appendChild(camaleaoStyle);
@@ -140,6 +142,7 @@
                 }
 
                 informarAltura();
+                // Observa mudanças na ferramenta para reajustar o tamanho caso necessário
                 const observer = new MutationObserver(informarAltura);
                 observer.observe(document.body, { childList: true, subtree: true, attributes: true });
             }
@@ -206,6 +209,7 @@
 
         .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
         
+        /* BOTÕES FLUTUANTES */
         .floating-button {
             position: fixed; z-index: 1000; cursor: pointer;
             background-color: var(--color-card-bg);
@@ -220,6 +224,7 @@
         .back-to-portal { top: 20px; left: 20px; }
         .light-theme #theme-icon-dark, body:not(.light-theme) #theme-icon-light { display: none; }
 
+        /* BANNER */
         .tool-banner { margin-bottom: 2rem; }
         .tool-banner a { display: block; line-height: 0; }
         .tool-banner-image {
@@ -230,6 +235,7 @@
         }
         .tool-banner-image:hover { transform: scale(1.02); opacity: 0.9; }
 
+        /* CARTÕES DE CONTEÚDO */
         .content-card {
             background-color: var(--color-card-bg);
             backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
@@ -252,6 +258,7 @@
             position: absolute; left: 0; top: 0; color: var(--color-primary);
         }
 
+        /* ALERTA DE PRIORIDADE */
         .alert-box {
             border-left: 5px solid var(--color-secondary);
             background: rgba(230, 57, 70, 0.1);
@@ -263,6 +270,7 @@
         .alert-text { font-weight: 600; }
         .date-highlight { color: var(--color-secondary); font-weight: 800; text-decoration: underline; }
 
+        /* ESTILOS DO FORMULÁRIO (Adaptados ao Tema) */
         .data-box {
             background: rgba(0, 0, 0, 0.2);
             padding: 1.5rem; border-radius: 8px;
@@ -331,6 +339,7 @@
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+        /* RODAPÉ */
         footer { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--color-card-border); color: #888; text-align: center; }
         .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
         .footer-link { color: var(--color-text); text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; transition: color 0.3s; }
@@ -347,6 +356,7 @@
 </head>
 <body id="top">
 
+    <!-- BOTÕES DE NAVEGAÇÃO -->
     <a href="https://cronicasestelares.vercel.app/" class="floating-button back-to-portal" title="Voltar ao portal">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
     </a>
@@ -357,16 +367,19 @@
     </div>
 
     <main class="container">
+        <!-- BANNER -->
         <div class="tool-banner">
             <a href="https://www.youtube.com/@CronicasEstelaress" target="_blank" rel="noopener noreferrer">
                 <img class="tool-banner-image" src="https://raw.githubusercontent.com/marcosbernardo2802/portal/main/images/baner-app.png" alt="Banner Crônicas Estelares">
             </a>
         </div>
 
+        <!-- CONTEÚDO PRINCIPAL -->
         <div class="content-card">
             <h1><i class="fas fa-file-contract"></i> Protocolos de Integração</h1>
             <p style="text-align: center; margin-bottom: 2rem;">Diretrizes para participação de Membros na narrativa do canal.</p>
 
+            <!-- ALERTA PRIORITÁRIO -->
             <div class="alert-box">
                 <h2><i class="fas fa-bullhorn"></i> TRANSMISSÃO PRIORITÁRIA</h2>
                 <p class="alert-text">
@@ -380,6 +393,7 @@
                 </p>
             </div>
 
+            <!-- REQUISITOS DE PATENTE -->
             <h2><i class="fas fa-medal"></i> 1. Requisitos de Patente e Benefícios</h2>
             
             <h3>🔹 Nível 1: Tenentes</h3>
@@ -405,6 +419,7 @@
                 </a>
             </p>
 
+            <!-- TERMINAL DE FORMULÁRIO -->
             <h2><i class="fas fa-id-card"></i> 2. Terminal de Recrutamento</h2>
             <p>Para calibrar os sensores da nave e gerar o seu avatar, o <strong>Comandante</strong> deve comentar no último vídeo do canal a frase <strong>"Solicito Comando da Missão"</strong> e preencher a ficha tática abaixo com os seus dados:</p>
 
@@ -420,12 +435,12 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="form-label"><span><span>Nome YouTube</span><span class="required-star">*</span></span> <span class="counter">Identificação</span></label>
+                            <label class="form-label"><span>Nome YouTube <span class="required-star">*</span></span> <span class="counter">Identificação</span></label>
                             <input type="text" id="member-name" required placeholder="Ex: @CronicasEstelaress" class="form-input">
                         </div>
                         <div>
                             <label class="form-label">
-                                <span><span>Patente no Canal</span><span class="required-star">*</span></span>
+                                <span>Patente no Canal <span class="required-star">*</span></span>
                                 <span class="char-counter mt-0.5">Membros têm prioridade</span>
                             </label>
                             <select id="rank" required class="form-input cursor-pointer appearance-none">
@@ -438,11 +453,11 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="md:col-span-2">
-                            <label class="form-label"><span><span>Nome do Personagem</span><span class="required-star">*</span></span></label>
+                            <label class="form-label">Nome do Personagem <span class="required-star">*</span></label>
                             <input type="text" id="char-full-name" required placeholder="Ex: Comandante Alex Thorne" class="form-input">
                         </div>
                         <div>
-                            <label class="form-label"><span><span>Função Principal</span><span class="required-star">*</span></span></label>
+                            <label class="form-label">Função Principal <span class="required-star">*</span></label>
                             <input type="text" id="char-role" list="role-suggestions" required placeholder="Ex: Piloto..." class="form-input">
                             <datalist id="role-suggestions">
                                 <option value="Militar">
@@ -453,34 +468,34 @@
                             </datalist>
                         </div>
                         <div>
-                            <label class="form-label"><span><span>Idade Aproximada</span><span class="required-star">*</span></span></label>
+                            <label class="form-label">Idade Aproximada <span class="required-star">*</span></label>
                             <input type="text" id="char-age" required placeholder="Ex: 28 anos" class="form-input">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="form-label"><span><span>Porte Físico</span><span class="required-star">*</span></span></label>
+                            <label class="form-label">Porte Físico <span class="required-star">*</span></label>
                             <input type="text" id="char-body" required placeholder="Ex: Atlético, alto" class="form-input">
                         </div>
                         <div>
-                            <label class="form-label"><span><span>Cor da Pele</span><span class="required-star">*</span></span></label>
+                            <label class="form-label">Cor da Pele <span class="required-star">*</span></label>
                             <input type="text" id="char-skin" required placeholder="Ex: Parda, clara..." class="form-input">
                         </div>
                     </div>
 
                     <div>
-                        <label class="form-label"><span><span>Descrição Visual</span><span class="required-star">*</span></span> <span class="counter" id="visual-count">0/300</span></label>
+                        <label class="form-label"><span>Descrição Visual <span class="required-star">*</span></span> <span class="counter" id="visual-count">0/300</span></label>
                         <textarea id="char-visual-desc" rows="3" maxlength="300" required placeholder="Cabelo, barba, cicatrizes, vestimenta. Ex: Cabelo platinado, cicatriz no olho." class="form-input resize-none"></textarea>
                     </div>
 
                     <div>
-                        <label class="form-label"><span>Extras (Acessórios - Opcional)</span></label>
+                        <label class="form-label">Extras (Acessórios - Opcional)</label>
                         <input type="text" id="char-extras" placeholder="Ex: Olhos cibernéticos azuis" class="form-input">
                     </div>
 
                     <div>
-                        <label class="form-label"><span><span>Origem do Personagem (Backstory) - Opcional</span></span> <span class="counter" id="backstory-count">0/600</span></label>
+                        <label class="form-label"><span>Origem do Personagem (Backstory) - Opcional</span> <span class="counter" id="backstory-count">0/600</span></label>
                         <textarea id="char-backstory" rows="4" maxlength="600" placeholder="Conte o passado do seu herói..." class="form-input resize-none"></textarea>
                     </div>
 
@@ -498,6 +513,7 @@
                 </form>
             </div>
 
+            <!-- SUCCESS MESSAGE -->
             <div id="success-msg" class="hidden data-box text-center py-10">
                 <i class="fas fa-satellite-dish" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
                 <h2 style="border: none; margin-top: 0; color: var(--color-primary);">Transmissão Concluída!</h2>
@@ -507,6 +523,7 @@
                 </button>
             </div>
 
+            <!-- REGRAS E DIREITOS -->
             <h2><i class="fas fa-gavel"></i> 3. Conduta e Direitos</h2>
             <ul class="styled-list">
                 <li><strong>Lore:</strong> O personagem deve respeitar o universo Sci-Fi de <em>Crônicas Estelares</em>.</li>
@@ -523,6 +540,7 @@
         </div>
     </main>
 
+    <!-- RODAPÉ -->
     <footer>
         <div class="container">
             <div style="background: rgba(0,0,0,0.2); border: 1px dashed var(--color-card-border); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; display: inline-block;">
@@ -544,22 +562,26 @@
         </div>
     </footer>
 
+    <!-- Firebase Scripts e Lógica -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged, signInWithCustomToken, setPersistence, inMemoryPersistence } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Atualizar ano
             if (document.getElementById('current-year')) {
                 document.getElementById('current-year').textContent = new Date().getFullYear();
             }
 
+            // Lógica do Tema
             const themeBtn = document.getElementById('theme-toggle');
             themeBtn.addEventListener('click', () => {
                 const isLight = document.body.classList.toggle('light-theme');
                 localStorage.setItem('theme', isLight ? 'light' : 'dark');
             });
 
+            // Aplicar tema salvo
             const storedTheme = localStorage.getItem('theme');
             if (storedTheme === 'light') {
                 document.body.classList.add('light-theme');
@@ -567,6 +589,7 @@
                 document.body.classList.add('light-theme');
             }
 
+            // Contador de Caracteres Dinâmico
             const updateCounter = (inputId, counterId, max) => {
                 const input = document.getElementById(inputId);
                 const counter = document.getElementById(counterId);
@@ -582,12 +605,14 @@
             updateCounter('char-backstory', 'backstory-count', 600);
         });
 
+        // Configuração do Firebase
         const isPreviewEnv = typeof __firebase_config !== 'undefined';
         let firebaseConfig;
 
         if (isPreviewEnv) {
             firebaseConfig = JSON.parse(__firebase_config);
         } else {
+            // As suas chaves reais do Vercel/Produção
             firebaseConfig = {
                 apiKey: "AIzaSyDtwWAHzXntzZBVw8glJniJSgNdMkbsGMw",
                 authDomain: "formulario-de-protagonista.firebaseapp.com",
@@ -607,6 +632,9 @@
 
         async function initAuth() {
             try {
+                // MÁGICA PARA IFRAMES: Usa memória volátil para evitar bloqueio de escudos do navegador
+                await setPersistence(auth, inMemoryPersistence);
+
                 if (isPreviewEnv && typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
                 } else {
@@ -627,11 +655,34 @@
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            if (!currentUser) { alert("Sistemas de comunicação offline. Aguardando sinal..."); return; }
-
+            
             submitBtn.disabled = true;
             btnText.textContent = "Transmitindo...";
             btnSpinner.classList.remove('hidden');
+
+            try {
+                // Força a conexão no exato momento do clique, caso o navegador tenha atrasado a ligação
+                if (!currentUser && !isPreviewEnv) {
+                    await setPersistence(auth, inMemoryPersistence);
+                    const cred = await signInAnonymously(auth);
+                    currentUser = cred.user;
+                }
+            } catch (authError) {
+                console.error("Bloqueio de navegador:", authError);
+                alert("Atenção Comandante: Os escudos do seu navegador estão muito altos! Tente usar outro navegador ou acesse o portal pelo celular para enviar a ficha.");
+                submitBtn.disabled = false;
+                btnText.textContent = "Transmitir Ficha Tática";
+                btnSpinner.classList.add('hidden');
+                return;
+            }
+
+            if (!currentUser) { 
+                alert("Sistemas de comunicação offline. Aguardando sinal..."); 
+                submitBtn.disabled = false;
+                btnText.textContent = "Transmitir Ficha Tática";
+                btnSpinner.classList.add('hidden');
+                return; 
+            }
 
             const formData = {
                 membroYoutube: document.getElementById('member-name').value,
