@@ -246,11 +246,11 @@
         .light-theme .content-card { box-shadow: 0 8px 25px var(--color-shadow); }
 
         h1, h2, h3 { color: var(--color-primary); margin-bottom: 1rem; }
-        h1 { color: var(--color-secondary); text-align: center; font-size: 2.2rem; text-shadow: 0 0 10px rgba(230, 57, 70, 0.3); }
-        h2 { font-size: 1.5rem; border-bottom: 1px solid var(--color-card-border); padding-bottom: 0.5rem; margin-top: 1.5rem; }
-        h3 { font-size: 1.2rem; color: var(--color-text); font-weight: 700; margin-top: 1rem; }
+        h1 { color: var(--color-secondary); text-align: center; font-size: 1.8rem; text-shadow: 0 0 10px rgba(230, 57, 70, 0.3); }
+        h2 { font-size: 1.3rem; border-bottom: 1px solid var(--color-card-border); padding-bottom: 0.5rem; margin-top: 1.5rem; }
+        h3 { font-size: 1.1rem; color: var(--color-text); font-weight: 700; margin-top: 1rem; }
         
-        p, li { margin-bottom: 0.8rem; font-size: 1.05rem; }
+        p, li { margin-bottom: 0.8rem; font-size: 0.9rem; }
         ul { list-style: none; padding-left: 0; }
         ul.styled-list li { position: relative; padding-left: 1.5rem; }
         ul.styled-list li::before {
@@ -280,18 +280,19 @@
 
         .form-label {
             display: flex; justify-content: space-between;
-            color: var(--color-text); font-weight: 600; font-size: 0.9rem;
+            color: var(--color-text); font-weight: 600; font-size: 0.775rem;
             margin-bottom: 0.25rem;
+            align-items: center;
         }
-        .form-label .counter { font-size: 0.75rem; font-weight: 400; opacity: 0.7; }
-        .required-star { color: var(--color-secondary); margin-left: 2px; }
+        .form-label .counter { font-size: 0.7rem; font-weight: 400; opacity: 0.7; }
+        .required-star { color: var(--color-secondary); margin-right: 4px; font-weight: bold; }
 
         .form-input {
             width: 100%;
             background-color: rgba(0, 0, 0, 0.3);
             border: 1px solid var(--color-card-border);
             border-radius: 6px;
-            padding: 0.75rem 1rem;
+            padding: 0.40rem 1rem;
             color: var(--color-text);
             font-family: var(--font-main);
             font-size: 0.95rem;
@@ -320,10 +321,12 @@
         }
 
         .btn-submit {
-            width: 100%;
+            width: auto;
+            min-width: 220px;
+            margin: 0 auto;
             background: linear-gradient(45deg, var(--color-secondary), #b91c1c);
-            color: white; border: none; padding: 1rem; border-radius: 8px;
-            font-size: 1.1rem; font-weight: 700; cursor: pointer;
+            color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 8px;
+            font-size: 0.9rem; font-weight: 700; cursor: pointer;
             transition: all 0.3s ease; display: flex; justify-content: center; align-items: center; gap: 10px;
         }
         .light-theme .btn-submit { background: linear-gradient(45deg, var(--color-primary), #003b7a); }
@@ -349,7 +352,7 @@
 
         @media (max-width: 600px) {
             .container { padding: 1rem; }
-            h1 { font-size: 1.8rem; }
+            h1 { font-size: 1.5rem; }
             .content-card { padding: 1.5rem; }
         }
     </style>
@@ -413,7 +416,7 @@
                 <li><strong>Direito:</strong> Criação de Avatar Visual (IA) e participação ativa na narrativa.</li>
                 <li><strong>Ação Necessária:</strong> Preencher o Terminal de Recrutamento abaixo.</li>
             </ul>
-            <p class="mt-4">
+            <p class="mt-4 mb-10">
                 <a href="https://www.youtube.com/channel/UCSI73DwupK9w8SLPESX1DNw/join" target="_blank" style="color: var(--color-primary); font-weight: bold; text-decoration: underline;">
                     <i class="fas fa-star"></i> Torne-se Membro Oficial Aqui
                 </a>
@@ -423,7 +426,7 @@
             <h2><i class="fas fa-id-card"></i> 2. Terminal de Recrutamento</h2>
             <p>Para calibrar os sensores da nave e gerar o seu avatar, o <strong>Comandante</strong> deve comentar no último vídeo do canal a frase <strong>"Solicito Comando da Missão"</strong> e preencher a ficha tática abaixo com os seus dados:</p>
 
-            <div class="data-box" id="form-container">
+            <div class="data-box my-8" id="form-container">
                 <p style="font-size: 0.75em; opacity: 0.8; margin-bottom: 1rem; text-align: right;">
                     <span class="required-star">*</span> Campos obrigatórios
                 </p>
@@ -435,12 +438,12 @@
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="form-label"><span>Nome YouTube <span class="required-star">*</span></span> <span class="counter">Identificação</span></label>
+                            <label class="form-label"><span><span class="required-star">*</span> Nome YouTube</span> <span class="counter">Identificação</span></label>
                             <input type="text" id="member-name" required placeholder="Ex: @CronicasEstelaress" class="form-input">
                         </div>
                         <div>
                             <label class="form-label">
-                                <span>Patente no Canal <span class="required-star">*</span></span>
+                                <span><span class="required-star">*</span> Patente no Canal</span>
                                 <span class="char-counter mt-0.5">Membros têm prioridade</span>
                             </label>
                             <select id="rank" required class="form-input cursor-pointer appearance-none">
@@ -449,15 +452,19 @@
                                 <option value="tenente" disabled>Tenente (Membro Nível 1) - Em breve</option>
                             </select>
                         </div>
+                        <div class="md:col-span-2">
+                            <label class="form-label"><span>E-mail de Comunicação - Opcional</span> <span class="counter">Canal seguro com a Capitã</span></label>
+                            <input type="email" id="member-email" placeholder="Ex: comandante@frota.com" class="form-input">
+                        </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div class="md:col-span-2">
-                            <label class="form-label">Nome do Personagem <span class="required-star">*</span></label>
+                            <label class="form-label"><span><span class="required-star">*</span> Nome do Personagem</span></label>
                             <input type="text" id="char-full-name" required placeholder="Ex: Comandante Alex Thorne" class="form-input">
                         </div>
                         <div>
-                            <label class="form-label">Função Principal <span class="required-star">*</span></label>
+                            <label class="form-label"><span><span class="required-star">*</span> Função Principal</span></label>
                             <input type="text" id="char-role" list="role-suggestions" required placeholder="Ex: Piloto..." class="form-input">
                             <datalist id="role-suggestions">
                                 <option value="Militar">
@@ -468,41 +475,41 @@
                             </datalist>
                         </div>
                         <div>
-                            <label class="form-label">Idade Aproximada <span class="required-star">*</span></label>
+                            <label class="form-label"><span><span class="required-star">*</span> Idade Aproximada</span></label>
                             <input type="text" id="char-age" required placeholder="Ex: 28 anos" class="form-input">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label class="form-label">Porte Físico <span class="required-star">*</span></label>
+                            <label class="form-label"><span><span class="required-star">*</span> Porte Físico</span></label>
                             <input type="text" id="char-body" required placeholder="Ex: Atlético, alto" class="form-input">
                         </div>
                         <div>
-                            <label class="form-label">Cor da Pele <span class="required-star">*</span></label>
+                            <label class="form-label"><span><span class="required-star">*</span> Cor da Pele</span></label>
                             <input type="text" id="char-skin" required placeholder="Ex: Parda, clara..." class="form-input">
                         </div>
                     </div>
 
                     <div>
-                        <label class="form-label"><span>Descrição Visual <span class="required-star">*</span></span> <span class="counter" id="visual-count">0/300</span></label>
+                        <label class="form-label"><span><span class="required-star">*</span> Descrição Visual</span> <span class="counter" id="visual-count">0/300</span></label>
                         <textarea id="char-visual-desc" rows="3" maxlength="300" required placeholder="Cabelo, barba, cicatrizes, vestimenta. Ex: Cabelo platinado, cicatriz no olho." class="form-input resize-none"></textarea>
                     </div>
 
                     <div>
-                        <label class="form-label">Extras (Acessórios - Opcional)</label>
+                        <label class="form-label"><span>Extras</span></label>
                         <input type="text" id="char-extras" placeholder="Ex: Olhos cibernéticos azuis" class="form-input">
                     </div>
 
                     <div>
-                        <label class="form-label"><span>Origem do Personagem (Backstory) - Opcional</span> <span class="counter" id="backstory-count">0/600</span></label>
+                        <label class="form-label"><span>Origem do Personagem - Opcional</span> <span class="counter" id="backstory-count">0/600</span></label>
                         <textarea id="char-backstory" rows="4" maxlength="600" placeholder="Conte o passado do seu herói..." class="form-input resize-none"></textarea>
                     </div>
 
                     <div class="flex items-start gap-3 mt-4">
                         <input type="checkbox" id="terms-check" required class="custom-checkbox mt-1 shrink-0">
                         <label for="terms-check" style="font-size: 0.85rem; font-weight: 400; opacity: 0.9; cursor: pointer; display: block;">
-                            Confirmo que autorizo o <strong>Crônicas Estelares</strong> a utilizar meu personagem em vídeos e artes geradas por IA. <span class="required-star">*</span>
+                            <span class="required-star">*</span> Confirmo que li e aceito os <button type="button" onclick="openTerms()" style="color: var(--color-primary); text-decoration: underline; background: none; border: none; padding: 0; font: inherit; cursor: pointer;">Termos de Uso e Cessão de Direitos</button> do <strong>Crônicas Estelares</strong> para utilização do meu personagem.
                         </label>
                     </div>
 
@@ -514,7 +521,7 @@
             </div>
 
             <!-- SUCCESS MESSAGE -->
-            <div id="success-msg" class="hidden data-box text-center py-10">
+            <div id="success-msg" class="hidden data-box text-center py-10 my-8">
                 <i class="fas fa-satellite-dish" style="font-size: 3rem; color: var(--color-primary); margin-bottom: 1rem;"></i>
                 <h2 style="border: none; margin-top: 0; color: var(--color-primary);">Transmissão Concluída!</h2>
                 <p style="opacity: 0.8; margin-bottom: 2rem;">Os dados do seu protagonista foram gravados na nave. A Capitã Nyx Solares avaliará sua ficha em breve.</p>
@@ -526,14 +533,14 @@
             <!-- REGRAS E DIREITOS -->
             <h2><i class="fas fa-gavel"></i> 3. Conduta e Direitos</h2>
             <ul class="styled-list">
-                <li><strong>Lore:</strong> O personagem deve respeitar o universo Sci-Fi de <em>Crônicas Estelares</em>.</li>
+                <li><strong>Lore e Coerência:</strong> O personagem deve estar estritamente alinhado ao universo Sci-Fi de <em>Crônicas Estelares</em>. (Ex: um cavaleiro ou alienígena medieval no comando de uma nave espacial não será aceito).</li>
                 <li><strong>Hierarquia:</strong> O roteiro final é decisão criativa do canal.</li>
-                <li><strong>Veto:</strong> Nomes ou descrições ofensivas resultarão em expulsão imediata da ponte de comando.</li>
+                <li><strong>Avaliação e Veto:</strong> Reservamo-nos o direito absoluto de aceitar, adaptar ou recusar as fichas enviadas que fujam da temática do canal. Nomes/descrições ofensivas resultam em veto imediato.</li>
                 <li><strong>Fila de Desdobramento:</strong> A aparição segue ordem de antiguidade ou sorteio mensal.</li>
             </ul>
 
             <h3 style="margin-top: 1.5rem;">Direitos de Uso</h3>
-            <p style="font-size: 0.95rem; opacity: 0.8;">
+            <p style="font-size: 0.85rem; opacity: 0.8;">
                 Ao submeter seus dados, o membro concorda que o <strong>Crônicas Estelares</strong> reserva-se o direito de utilizar as imagens e histórias geradas para quaisquer fins futuros do canal.
             </p>
 
@@ -561,6 +568,59 @@
             <p class="copyright-text">&copy; <span id="current-year">2026</span> Crônicas Estelares. Sistemas desenvolvidos pelo Comandante Marcos.</p>
         </div>
     </footer>
+
+    <!-- MODAL DE TERMOS DE USO -->
+    <div id="terms-modal" class="fixed inset-0 z-[2000] hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm transition-opacity">
+        <div class="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-xl border border-[var(--color-card-border)] bg-[var(--color-card-bg)] p-6 md:p-8 shadow-2xl">
+            <!-- Botão Fechar -->
+            <button onclick="closeTerms()" class="absolute top-4 right-4 text-[var(--color-text)] opacity-70 hover:opacity-100 transition-opacity">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            
+            <h2 class="text-xl md:text-2xl font-bold text-[var(--color-primary)] mb-1" style="border: none;"><i class="fas fa-scroll"></i> DIRETRIZES OFICIAIS E TERMOS DE USO</h2>
+            <p class="text-xs opacity-60 mb-4 border-b border-[var(--color-card-border)] pb-2">Versão 1.0 - Em vigor a partir de Março de 2026</p>
+            
+            <div class="space-y-4 text-sm md:text-base text-[var(--color-text)] opacity-90 leading-relaxed mt-4">
+                <p>Ao submeter a sua ficha tática de personagem para o canal <strong>Crônicas Estelares</strong>, você (doravante denominado "Comandante" ou "Membro") concorda integralmente com os seguintes termos de uso e cessão de direitos:</p>
+                
+                <div>
+                    <strong style="color: var(--color-secondary);">1. Cessão de Direitos e Uso de Propriedade Intelectual</strong>
+                    <p>O Membro cede ao canal <em>Crônicas Estelares</em> o direito de utilizar, adaptar, modificar e exibir o nome, história (backstory), características físicas e demais dados do personagem submetido. Esta autorização abrange a criação de roteiros, narrações, vídeos, artes geradas por Inteligência Artificial, thumbnails e materiais promocionais do canal, por tempo indeterminado.</p>
+                </div>
+
+                <div>
+                    <strong style="color: var(--color-secondary);">2. Controle Criativo e Narrativo (A Lei da Frota)</strong>
+                    <p>O <em>Crônicas Estelares</em> detém o controle criativo absoluto sobre o roteiro e o destino do personagem. Isso significa que o seu personagem poderá assumir diversos papéis na história (herói, coadjuvante, vilão, etc.) e está sujeito aos riscos do universo Sci-Fi, incluindo ferimentos, traições ou até mesmo a "baixa em combate" (morte na narrativa).</p>
+                </div>
+
+                <div>
+                    <strong style="color: var(--color-secondary);">3. Limitações da Inteligência Artificial</strong>
+                    <p>A representação visual do seu personagem será gerada através de Inteligência Artificial com base na sua descrição. O Membro compreende e aceita que a IA possui limitações técnicas e criativas, não sendo possível garantir uma cópia 100% exata ou fiel aos detalhes imaginados ou enviados na descrição.</p>
+                </div>
+
+                <div>
+                    <strong style="color: var(--color-secondary);">4. Ausência de Vínculo Comercial e Compensação</strong>
+                    <p>A participação no Sistema de Protagonistas é um benefício exclusivo e voluntário atrelado à patente de Membro Nível 2 (Comandante) no YouTube. O Membro declara ciência de que não possui direito a qualquer tipo de remuneração financeira, royalties, compensação, divisão de lucros ou direitos de copropriedade sobre os vídeos monetizados pelo canal <em>Crônicas Estelares</em>.</p>
+                </div>
+
+                <div>
+                    <strong style="color: var(--color-secondary);">5. Coerência com a Lore, Originalidade e Direito de Recusa</strong>
+                    <p>O personagem enviado <strong>DEVE estar de acordo com a "lore"</strong> (história e temática) do universo Sci-Fi do canal. Como exemplo prático: um cavaleiro medieval ou um alienígena de fantasia mágica no comando de uma nave estelar não se encaixa na narrativa. Além disso, o personagem deve ser original, sendo proibido o uso de propriedades de terceiros (Ex: Luke Skywalker). <strong>O canal reserva-se o direito absoluto de avaliar, aceitar, adaptar ou recusar qualquer ficha</strong> que não se alinhe à visão criativa, quebre a imersão do universo ou contenha teor ofensivo.</p>
+                </div>
+
+                <div>
+                    <strong style="color: var(--color-secondary);">6. Permanência e Cancelamento de Patente</strong>
+                    <p>Caso o Membro cancele a sua assinatura no YouTube (perdendo a patente de Comandante), o canal <em>Crônicas Estelares</em> mantém o direito irrevogável de manter no ar todos os vídeos, artes e roteiros já publicados que incluam o personagem. Contudo, o personagem poderá ser removido de histórias e vídeos futuros a critério do canal.</p>
+                </div>
+            </div>
+
+            <div class="mt-8 flex justify-end">
+                <button type="button" onclick="acceptTerms()" class="btn-submit" style="width: auto; min-width: 0; padding: 0.6rem 1.5rem; font-size: 0.9rem;">
+                    Compreendido, Capitã!
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Firebase Scripts e Lógica -->
     <script type="module">
@@ -686,6 +746,7 @@
 
             const formData = {
                 membroYoutube: document.getElementById('member-name').value,
+                emailContato: document.getElementById('member-email').value,
                 patenteCanal: document.getElementById('rank').value,
                 nomePersonagem: document.getElementById('char-full-name').value,
                 funcao: document.getElementById('char-role').value,
@@ -695,6 +756,8 @@
                 descricaoVisual: document.getElementById('char-visual-desc').value,
                 extras: document.getElementById('char-extras').value,
                 backstory: document.getElementById('char-backstory').value,
+                termosAceitos: document.getElementById('terms-check').checked, // Registo oficial de aceite
+                termosVersao: "1.0", // Versão do documento jurídico aceito
                 uid: currentUser.uid,
                 timestamp: serverTimestamp()
             };
@@ -730,6 +793,29 @@
             successMsg.classList.add('hidden');
             formContainer.classList.remove('hidden');
         };
+
+        // Lógica do Modal de Termos
+        window.openTerms = () => {
+            document.getElementById('terms-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Evita rolagem da página por trás do modal
+        };
+        
+        window.closeTerms = () => {
+            document.getElementById('terms-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+        
+        window.acceptTerms = () => {
+            document.getElementById('terms-check').checked = true;
+            window.closeTerms();
+        };
+
+        // Fechar modal ao clicar fora dele
+        document.getElementById('terms-modal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('terms-modal')) {
+                window.closeTerms();
+            }
+        });
     </script>
 </body>
 </html>
