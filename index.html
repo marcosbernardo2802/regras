@@ -127,9 +127,9 @@
                     areaPrincipal.style.marginTop = '0';
                 }
 
-                // Trava a barra de rolagem dupla do Iframe
-                document.documentElement.style.overflowY = 'hidden';
-                document.body.style.overflowY = 'hidden';
+                // LIBERA A ROLAGEM: Destravando a barra de rolagem para o Iframe funcionar corretamente
+                document.documentElement.style.overflowY = 'auto';
+                document.body.style.overflowY = 'auto';
 
                 // 3. Ajuste de Altura Anti-Loop (Comunicação com o Portal)
                 let ultimaAltura = 0;
