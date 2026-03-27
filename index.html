@@ -744,22 +744,23 @@
                 return; 
             }
 
+            // TÁTICA DA CAPITÃ: Numeração para forçar a ordem de leitura no Firebase
             const formData = {
-                membroYoutube: document.getElementById('member-name').value,
-                emailContato: document.getElementById('member-email').value,
-                patenteCanal: document.getElementById('rank').value,
-                nomePersonagem: document.getElementById('char-full-name').value,
-                funcao: document.getElementById('char-role').value,
-                idade: document.getElementById('char-age').value,
-                porteFisico: document.getElementById('char-body').value,
-                corPele: document.getElementById('char-skin').value,
-                descricaoVisual: document.getElementById('char-visual-desc').value,
-                extras: document.getElementById('char-extras').value,
-                backstory: document.getElementById('char-backstory').value,
-                termosAceitos: document.getElementById('terms-check').checked, // Registo oficial de aceite
-                termosVersao: "1.0", // Versão do documento jurídico aceito
-                uid: currentUser.uid,
-                timestamp: serverTimestamp()
+                "01_membroYoutube": document.getElementById('member-name').value,
+                "02_emailContato": document.getElementById('member-email').value,
+                "03_patenteCanal": document.getElementById('rank').value,
+                "04_nomePersonagem": document.getElementById('char-full-name').value,
+                "05_funcao": document.getElementById('char-role').value,
+                "06_idade": document.getElementById('char-age').value,
+                "07_porteFisico": document.getElementById('char-body').value,
+                "08_corPele": document.getElementById('char-skin').value,
+                "09_descricaoVisual": document.getElementById('char-visual-desc').value,
+                "10_extras": document.getElementById('char-extras').value,
+                "11_backstory": document.getElementById('char-backstory').value,
+                "12_termosAceitos": document.getElementById('terms-check').checked,
+                "13_termosVersao": "1.0",
+                "14_uid": currentUser.uid,
+                "15_timestamp": serverTimestamp()
             };
 
             try {
