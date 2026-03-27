@@ -612,15 +612,15 @@
         if (isPreviewEnv) {
             firebaseConfig = JSON.parse(__firebase_config);
         } else {
-            // As suas chaves reais do Vercel/Produção
+            // CHAVES REAIS E CORRIGIDAS (Fornecidas pelo Comandante)
             firebaseConfig = {
-                apiKey: "AIzaSyDtwWAHzXntzZBVw8glJniJSgNdMkbsGMw",
+                apiKey: "AIzaSyDtwWAHzXntzZ8Vw8g1JniJSgNdMkbsGMw",
                 authDomain: "formulario-de-protagonista.firebaseapp.com",
                 projectId: "formulario-de-protagonista",
                 storageBucket: "formulario-de-protagonista.firebasestorage.app",
                 messagingSenderId: "66065532719",
-                appId: "1:66065532719:web:8d6b9a98984a88cca7c3da",
-                measurementId: "G-MZBJJ6KVK1"
+                appId: "1:66065532719:web:8d6b9a98984a88cea7c3da",
+                measurementId: "G-MZDJJ6KVK1"
             };
         }
 
@@ -661,15 +661,15 @@
             btnSpinner.classList.remove('hidden');
 
             try {
-                // Força a conexão no exato momento do clique, caso o navegador tenha atrasado a ligação
+                // Força a conexão no exato momento do clique para capturar o erro real da Chave
                 if (!currentUser && !isPreviewEnv) {
                     await setPersistence(auth, inMemoryPersistence);
                     const cred = await signInAnonymously(auth);
                     currentUser = cred.user;
                 }
             } catch (authError) {
-                console.error("Bloqueio de navegador:", authError);
-                alert("Atenção Comandante: Os escudos do seu navegador estão muito altos! Tente usar outro navegador ou acesse o portal pelo celular para enviar a ficha.");
+                console.error("Bloqueio de navegador ou erro de Chave:", authError);
+                alert("FALHA DE COMUNICAÇÃO!\n\nCausa: " + authError.message + "\n\nComandante, se o erro acima disser 'API key not valid', a chave no código tem alguma letra errada. Cole as chaves exatas do Firebase no arquivo index.html.");
                 submitBtn.disabled = false;
                 btnText.textContent = "Transmitir Ficha Tática";
                 btnSpinner.classList.add('hidden');
